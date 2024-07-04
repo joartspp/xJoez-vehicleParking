@@ -3,7 +3,7 @@ game 'gta5'
 lua54 'yes'
 
 developer 'xJoez <github.com/joartspp>'
-version '1.0.3'
+version '1.0.4'
 
 shared_script {
     '@ox_lib/init.lua',
