@@ -1,9 +1,21 @@
 return {
     ['Command'] = {
-        ['vehicleGet'] = 'vget',
-        ['vehiclePark'] = 'vpark',
-        ['vehicleTow'] = 'vtow',
-        ['vehicleGps'] = 'vgps',
+        ['vehicleGet'] = {
+            ['active'] = true,
+            ['command'] = 'vget'
+        },
+        ['vehiclePark'] = {
+            ['active'] = true,
+            ['command'] = 'vpark'
+        },
+        ['vehicleTow'] = {
+            ['active'] = true,
+            ['command'] = 'vtow'
+        },
+        ['vehicleGps'] = {
+            ['active'] = true,
+            ['command'] = 'vgps'
+        },
     },
     ['LimitVehicleParking'] = 3, -- -1 = unlimit
     ['stopEngineBeforeParking'] = false, -- if true, engine will be stopped before parking

@@ -27,7 +27,7 @@ vehicleGpsModules['function'] = function ()
         end
 
         realignData[#realignData+1] = {
-            title = ("%s - %s | %s"):format(dataVehicle['plate'], dataVehicle['vehicle'], ((dataVehicle['state'] and dataVehicle['vparking']) and 'In Parking') or 'Not In Parking'),
+            title = ("%s - %s | %s"):format(dataVehicle['plate'], dataVehicle['vehicle'], ((dataVehicle['state'] and dataVehicle['vparking']) and 'In Parking') or 'Not In Parking Or In Garage'),
             description = "Select this vehicle to show and mark in maps.",
             icon = 'map',
             metadata = (dataVehicle['state'] and dataVehicle['vparking']) and {
