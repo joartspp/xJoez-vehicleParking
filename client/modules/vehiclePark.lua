@@ -10,8 +10,6 @@ local helper = require 'data.shared.helper';
 
 local vehicleParkModules = {};
 
-local stateParking = false;
-
 -- Function to park/unpark vehicle
 vehicleParkModules['function'] = function()
     if (not cache.vehicle) then
@@ -22,7 +20,7 @@ vehicleParkModules['function'] = function()
         });
     end
 
-    if (stateParking) then
+    if (stateController.vehicleOnParkingNow) then
         return lib.notify({
             title = 'Vehicle Parking System',
             description = 'You are already parking/unparking a vehicle.',
@@ -84,9 +82,11 @@ vehicleParkModules['function'] = function()
 
         FreezeEntityPosition(cache.vehicle, true);
 
-        stateParking = true;
+        stateController.vehicleOnParkingNow = true;
 
         if (cfgUseLoading) then
+            stateController.loadingParking = true;
+
             local progessLoading = lib.progressCircle({
                 label = cfgLoading['text'],
                 duration = cfgLoading['time'],
@@ -101,6 +101,9 @@ vehicleParkModules['function'] = function()
             });
 
             if (not progessLoading) then
+                stateController.loadingParking = false;
+                stateController.vehicleOnParkingNow = false;
+
                 FreezeEntityPosition(cache.vehicle, false);
                 return lib.notify({
                     title = 'Vehicle Parking System',
@@ -116,8 +119,6 @@ vehicleParkModules['function'] = function()
             ['z'] = helper.Round(coordVeh['z'], 2),
             ['h'] = helper.Round(heading, 2)
         }
-
-        stateParking = false;
 
         local parkingResponse = cb_await('xJoez-vehicleParking:cb:vehicleParking', false, {
             plate = getPlate,
@@ -139,6 +140,8 @@ vehicleParkModules['function'] = function()
             description = 'You are parking the vehicle.',
             type = 'success'
         });
+
+        stateController.vehicleOnParkingNow = false;
     end
 
 end
