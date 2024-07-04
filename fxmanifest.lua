@@ -3,7 +3,7 @@ game 'gta5'
 lua54 'yes'
 
 developer 'xJoez <github.com/joartspp>'
-version '1.0.1'
+version '1.0.2'
 
 shared_script {
     '@ox_lib/init.lua',
@@ -21,7 +21,6 @@ client_scripts {
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
     'data/server/*.lua',
-    'server/modules/*.lua',
     'server/main.lua'
 }
 
