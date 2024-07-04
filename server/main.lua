@@ -1,3 +1,5 @@
+lib.versionCheck('joartspp/xJoez-vehicleParking')
+
 Framework = require 'data/shared/framework'
 
 local cb_reg = require 'data.shared.callback'.cb_reg;
